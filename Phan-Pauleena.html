@@ -5,10 +5,10 @@
     </head>
     <body>
         <div id="headerTab">
-            <li> About Me </li>
-            <li> Interest </li>
-            <li> Hobbies </li>
-            <li> Achievements </li>
+            <div id="c1"> About Me </div>
+            <div id="c2"> Interest </div>
+            <div id="c3"> Hobbies </div>
+            <div id="c4"> Achievements </div>
 
         </div>
         <div id="aboutMeSection">
@@ -121,19 +121,42 @@
         </div>
 
         <div id="footer"> 
-            <p> This is a footer </p>
+            <p> Back to the Top </p>
         </div>
     </body>
 </html>
 
 <script>
 
+    //directs the user to the section they pressed that is on the heading
+    function scrollTo(section){
+        document.getElementById(section).scrollIntoView({behavior:"smooth"});
+    }
+    
+    document.getElementById("c1").addEventListener('click', ()=>{
+        scrollTo("aboutMeSection");
+    })
+    document.getElementById("c2").addEventListener('click', ()=>{
+        scrollTo("interestSection");
+    })
+    document.getElementById("c3").addEventListener('click', ()=>{
+        scrollTo("hobbiesSection");
+    })
+    document.getElementById("c4").addEventListener('click', ()=>{
+        scrollTo("achievementsSection");
+    })
+
+    //directs users back to the top
+    document.getElementById("footer").addEventListener('click', ()=>{
+        scrollTo("headerTab");
+    })
 
 </script>
 
 <style>
     * {
         margin: 0;
+        padding: 30px;
     }
 
     img{
