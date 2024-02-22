@@ -2,14 +2,147 @@
 <html lang = "en">
     <head>
         <title> Autobiography </title>
+        <style>
+            * {
+                margin: 0;
+                font-family: monospace;
+            }
+    
+    
+            #headerTab{
+                background-color: #EAF4F4;
+                gap: 30px;
+                font-size: 20px;
+                padding: 20px;
+                display: flex;
+                justify-content: end;
+                align-items: center;
+            }
+    
+            #ldIcon{
+                width: 30px;
+                margin: 0;
+            }
+    
+            #c1:hover, #c2:hover, #c3:hover, #c4:hover, #ldIcon:hover, #footer:hover{
+                cursor: pointer;
+                color: purple;
+            }
+    
+            #name{
+                font-size: 130px;
+                text-align: center;
+                padding: 70px 70px 0 70px;
+            }
+    
+            #nameCaption{
+                text-align: center;
+                font-size: 30px;
+                padding-bottom: 100px;
+            }
+    
+            #sections{
+                display: flex;
+                flex-direction: column;
+            }
+    
+            #sections > div{
+                padding: 100px 100px 300px 100px;
+            }
+    
+            h1{
+                margin-bottom: 20px;
+                font-size: 50px;
+                text-decoration: underline;
+            }
+    
+            h2{
+                font-size: 40px;
+                margin-top: 70px;
+                margin-bottom: 20px;
+            }
+    
+            h3{
+                font-size: 30px;
+                margin-top: 50px;
+                margin-bottom: 20px;
+            }
+    
+            p{
+                font-size: 30px;
+                margin-bottom: 20px;
+                line-height: 35px;
+            }
+    
+            #aboutMeSection{
+                background-color: #CCE3DE;
+                
+            }
+    
+            #interestSection{
+                background-color: #A4C3B2;
+            }
+    
+            #hobbiesSection{
+                background-color: #6B9080;
+            }
+    
+            #achievementSection{
+                background-color: #43735E;
+            }
+    
+            #catDisplay, #chickenPlaces{
+                display: flex;
+                justify-content: space-around;
+                text-align: center;
+            }
+            
+            #catDisplay img{
+                width: 300px;
+                height: 450px;
+                border-radius: 10px;
+            }
+    
+            #chickenPlaces img{
+                width: 300px;
+                height: auto;
+                border-radius: 10px;
+            }
+    
+    
+            #miniongif{
+                width: 550px;
+            }
+    
+            #miniongif2{
+                width: 622px;
+            }
+    
+            #miniongif3{
+                width: 630px;
+                height: 350px;
+            }
+    
+            #miniongif, #miniongif2, #miniongif3{
+                border-radius: 30px;
+                margin: 5px;
+            }
+    
+            #footer{
+                background-color: #EAF4F4;
+                text-align: center;
+                padding: 20px 20px 5px 20px;
+            }
+        </style>
     </head>
+    
     <body>
         <div id="headerTab">
             <div id="c1"> About </div>
             <div id="c2"> Interest </div>
             <div id="c3"> Hobbies </div>
             <div id="c4"> Achievements </div>
-            <img src="https://cdn-icons-png.flaticon.com/128/667/667421.png" id="ldIcon">
+            <img src="https://cdn-icons-png.flaticon.com/128/667/667421.png" id="ldIcon" alt="moon">
         </div>
         <div id="nameSection">
             <div id="name">
@@ -151,200 +284,65 @@
         <div id="footer"> 
             <p> Back to the Top </p>
         </div>
+        <!-- Need to put script right here bc if we put it before the html we get null since the js will load first  -->
+        <!-- Putting it after body will give me an error on the html check -->
+        <script>
+            //directs the user to the section they pressed that is on the heading
+            function scrollTo(section){
+                document.getElementById(section).scrollIntoView({behavior:"smooth"});
+            }
+            
+            document.getElementById("c1").addEventListener('click', ()=>{
+                scrollTo("aboutMeSection");
+            })
+            document.getElementById("c2").addEventListener('click', ()=>{
+                scrollTo("interestSection");
+            })
+            document.getElementById("c3").addEventListener('click', ()=>{
+                scrollTo("hobbiesSection");
+            })
+            document.getElementById("c4").addEventListener('click', ()=>{
+                scrollTo("achievementSection");
+            })
+        
+            //directs users back to the top
+            document.getElementById("footer").addEventListener('click', ()=>{
+                scrollTo("headerTab");
+            })
+        
+            function changeBackground(section, color){
+                document.getElementById(section).style.backgroundColor = color;
+            }
+            currIcon = document.getElementById("ldIcon");
+            currIcon.addEventListener('click', ()=>{
+                //if the current icon is a sun then set it to the moon and change the bg and font color
+                if(currIcon.src == "https://cdn-icons-png.flaticon.com/128/667/667421.png"){
+                    currIcon.src ="https://cdn-icons-png.flaticon.com/128/439/439842.png";
+                    currIcon.alt = "sun icon";
+                    changeBackground("headerTab", "#0A0908");
+                    changeBackground("nameSection", "#131211");
+                    changeBackground("aboutMeSection", "#1C1A18");
+                    changeBackground("interestSection", "#29271B");
+                    changeBackground("hobbiesSection", "#28130D");
+                    changeBackground("achievementSection", "#131211");
+                    changeBackground("footer", "#0A0908");
+                    document.body.style.color = "white";
+        
+                }else{
+                    currIcon.src = "https://cdn-icons-png.flaticon.com/128/667/667421.png";
+                    currIcon.alt = "moon icon";
+                    changeBackground("headerTab", "#EAF4F4");
+                    changeBackground("nameSection", "white");
+                    changeBackground("aboutMeSection", "#CCE3DE");
+                    changeBackground("interestSection", "#A4C3B2");
+                    changeBackground("hobbiesSection", "#6B9080");
+                    changeBackground("achievementSection", "#43735E");
+                    changeBackground("footer", "#EAF4F4");
+                    document.body.style.color = "black";
+                }
+            })
+        </script>
     </body>
 </html>
 
-<script>
 
-    //directs the user to the section they pressed that is on the heading
-    function scrollTo(section){
-        document.getElementById(section).scrollIntoView({behavior:"smooth"});
-    }
-    
-    document.getElementById("c1").addEventListener('click', ()=>{
-        scrollTo("aboutMeSection");
-    })
-    document.getElementById("c2").addEventListener('click', ()=>{
-        scrollTo("interestSection");
-    })
-    document.getElementById("c3").addEventListener('click', ()=>{
-        scrollTo("hobbiesSection");
-    })
-    document.getElementById("c4").addEventListener('click', ()=>{
-        scrollTo("achievementSection");
-    })
-
-    //directs users back to the top
-    document.getElementById("footer").addEventListener('click', ()=>{
-        scrollTo("headerTab");
-    })
-
-    function changeBackground(section, color){
-        document.getElementById(section).style.backgroundColor = color;
-    }
-    currIcon = document.getElementById("ldIcon");
-    currIcon.addEventListener('click', ()=>{
-        //if the current icon is a sun then set it to the moon and change the bg and font color
-        if(currIcon.src == "https://cdn-icons-png.flaticon.com/128/667/667421.png"){
-            currIcon.src ="https://cdn-icons-png.flaticon.com/128/439/439842.png";
-            changeBackground("headerTab", "#0A0908");
-            changeBackground("nameSection", "#131211");
-            changeBackground("aboutMeSection", "#1C1A18");
-            changeBackground("interestSection", "#29271B");
-            changeBackground("hobbiesSection", "#28130D");
-            changeBackground("achievementSection", "#131211");
-            changeBackground("footer", "#0A0908");
-            document.body.style.color = "white";
-
-            
-        }else{
-            currIcon.src = "https://cdn-icons-png.flaticon.com/128/667/667421.png";
-            changeBackground("headerTab", "#EAF4F4");
-            changeBackground("nameSection", "white");
-            changeBackground("aboutMeSection", "#CCE3DE");
-            changeBackground("interestSection", "#A4C3B2");
-            changeBackground("hobbiesSection", "#6B9080");
-            changeBackground("achievementSection", "#43735E");
-            changeBackground("footer", "#EAF4F4");
-            document.body.style.color = "black";
-        }
-        
-
-    })
-
-</script>
-
-<style>
-    * {
-        margin: 0;
-        font-family: monospace;
-    }
-
-
-    #headerTab{
-        background-color: #EAF4F4;
-        gap: 30px;
-        font-size: 20px;
-        padding: 20px;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-    }
-
-    #ldIcon{
-        width: 30px;
-        margin: 0;
-    }
-
-    #c1:hover, #c2:hover, #c3:hover, #c4:hover, #ldIcon:hover, #footer:hover{
-        cursor: pointer;
-        color: purple;
-    }
-
-    #name{
-        font-size: 130px;
-        text-align: center;
-        padding: 70px 70px 0 70px;
-    }
-
-    #nameCaption{
-        text-align: center;
-        font-size: 30px;
-        padding-bottom: 100px;
-    }
-
-    #sections{
-        display: flex;
-        flex-direction: column;
-    }
-
-    #sections > div{
-        padding: 100px 100px 300px 100px;
-    }
-
-    h1{
-        margin-bottom: 20px;
-        font-size: 50px;
-        text-decoration: underline;
-    }
-
-    h2{
-        font-size: 40px;
-        margin-top: 70px;
-        margin-bottom: 20px;
-    }
-
-    h3{
-        font-size: 30px;
-        margin-top: 50px;
-        margin-bottom: 20px;
-    }
-
-    p{
-        font-size: 30px;
-        margin-bottom: 20px;
-        line-height: 35px;
-    }
-
-    #aboutMeSection{
-        background-color: #CCE3DE;
-        
-    }
-
-    #interestSection{
-        background-color: #A4C3B2;
-    }
-
-    #hobbiesSection{
-        background-color: #6B9080;
-    }
-
-    #achievementSection{
-        background-color: #43735E;
-    }
-
-    #catDisplay, #chickenPlaces{
-        display: flex;
-        justify-content: space-around;
-        text-align: center;
-    }
-    
-    #catDisplay img{
-        width: 300px;
-        height: 450px;
-        border-radius: 10px;
-    }
-
-    #chickenPlaces img{
-        width: 300px;
-        height: auto;
-        border-radius: 10px;
-    }
-
-
-    #miniongif{
-        width: 550px;
-    }
-
-    #miniongif2{
-        width: 622px;
-    }
-
-    #miniongif3{
-        width: 630px;
-        height: 350px;
-    }
-
-    #miniongif, #miniongif2, #miniongif3{
-        border-radius: 30px;
-        margin: 5px;
-    }
-
-    #footer{
-        background-color: #EAF4F4;
-        text-align: center;
-        padding: 20px 20px 5px 20px;
-    }
-
-
-</style>
